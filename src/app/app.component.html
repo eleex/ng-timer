@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <h1 class="col-12 text-center">Timer</h1>
+    <div class="col-12 text-center">
+      <p class="timer">
+        {{ appTimer.hours | timer }}:{{ appTimer.minutes | timer }}:{{
+          appTimer.seconds | timer
+        }}
+      </p>
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+      <div class="btn-group">
+        <button
+          *ngIf="!isActive"
+          type="button"
+          class="btn btn-success"
+          (click)="onStart()"
+        >
+          Start
+        </button>
+        <button
+          *ngIf="isActive"
+          type="button"
+          class="btn btn-danger"
+          (click)="onStop()"
+        >
+          Stop
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          #wait
+          [disabled]="!isActive"
+        >
+          Wait
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="onReset()"
+          [disabled]="!isActive"
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
